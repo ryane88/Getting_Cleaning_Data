@@ -1,4 +1,4 @@
 Getting_Cleaning_Data
 =====================
 
-Getting and Cleaning Data projecy
+Getting and Cleaning Data project
