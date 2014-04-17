@@ -12,3 +12,5 @@ The two data sets test and train are then combined for both the individual subje
 The final data.frame containing the extracted measurements for mean and standard deviation is then aggregated over the variables subject and activity, to produce a final tidy data file containing subject, activity, and the average values for all the retreived columns for the mean, and standard deviation.
 
 Using this final data frame, a file is written to the working directory with the calculted values.
+
+*1* http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones 
