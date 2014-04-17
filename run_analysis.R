@@ -62,10 +62,11 @@ colnames(tidy_y)<-c("activity_id","subject","activity")
 
 ##combine subject_data, activity_data and measurement data and write to text file
 final_tidy<-cbind(tidy_y,x_data)
-write.table(final_tidy_avg,"./final_tidy_avg.txt")
+
 
 ##compute averages using mean() aggregated over subject and activity
 final_tidy_avg<-aggregate(final_tidy[,4:ncol(final_tidy)],by=list(final_tidy$subject,final_tidy$activity),FUN=mean,na.rm=TRUE)
 colnames(final_tidy_avg)[1:2]<-c("subject","activity")
 
-##
+##write final tidy file
+write.table(final_tidy_avg,"./final_tidy_avg.txt")

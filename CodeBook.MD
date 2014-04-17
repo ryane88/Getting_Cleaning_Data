@@ -30,6 +30,7 @@ Numeric identifier for the 30 subjects used divided between test and training se
 Final output file created by script
 
 ##Transformations
+.Data from test and train data sets was combined
 .Only features representing the mean or standard deviation of measurements were retrieved
 .Numeric activity was transformed to activity description
 .Column names were renamed using the english description for activity and subject, and descriptions in file features.txt
