@@ -47,18 +47,22 @@ y_test_data<-read.table("./test/y_test.txt")
 y_train_data<-read.table("./train/y_train.txt")
 y_data<-rbind(y_test_data,y_train_data)
 
-##extract appropriate activity names from activities data.frame, and name columns appropriately
-tidy_y<-merge(y_data,activities,by.x="V1",by.y="V1",all)
-colnames(tidy_y)<-c("activity_id","activity")
-
 ##load subject data, and combine subject, activity and measurement variables for test set
 subject_test_data<-read.table("./test/subject_test.txt")
 subject_train_data<-read.table("./train/subject_train.txt")
 subject_data<-rbind(subject_test_data,subject_train_data)
 colnames(subject_data)<-"subject"
 
-##combine subject_data, activity_data and measurement data
-final_tidy<-cbind(subject_data,cbind(tidy_y,x_data))
+subject_y<-cbind(subject_data,y_data)
+
+##extract appropriate activity names from activities data.frame, and name columns appropriately
+tidy_y<-merge(subject_y,activities,by.x="V1",by.y="V1",all.x=TRUE)
+colnames(tidy_y)<-c("activity_id","subject","activity")
+
+
+##combine subject_data, activity_data and measurement data and write to text file
+final_tidy<-cbind(tidy_y,x_data)
+write.table(final_tidy_avg,"./final_tidy_avg.txt")
 
 ##compute averages using mean() aggregated over subject and activity
 final_tidy_avg<-aggregate(final_tidy[,4:ncol(final_tidy)],by=list(final_tidy$subject,final_tidy$activity),FUN=mean,na.rm=TRUE)
